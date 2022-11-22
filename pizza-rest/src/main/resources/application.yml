@@ -1,0 +1,19 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    generate-unique-name: false
+    name: pizza
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant-path-matcher
+
+  kafka:
+    bootstrap-servers: 'localhost:9092'
+
+pizza:
+  broker-topic:
+    application: ready
+    kitchen: kitchen
