@@ -6,14 +6,17 @@ import com.github.garmoza.pizza.rest.data.PizzaRepository;
 import com.github.garmoza.pizza.rest.domain.Ingredient;
 import com.github.garmoza.pizza.rest.domain.Pizza;
 import com.github.garmoza.pizza.rest.domain.PizzaOrder;
+import com.github.garmoza.pizza.rest.messaging.KafkaTopicProperties;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 
 import java.util.Arrays;
 
 @SpringBootApplication
+@EnableConfigurationProperties(KafkaTopicProperties.class)
 public class PizzaRestApplication {
 
     public static void main(String[] args) {

@@ -5,9 +5,9 @@ import com.github.garmoza.pizza.rest.data.PizzaRepository;
 import com.github.garmoza.pizza.rest.domain.Pizza;
 import com.github.garmoza.pizza.rest.domain.PizzaOrder;
 import com.github.garmoza.pizza.rest.messaging.KafkaOrderMessagingService;
+import com.github.garmoza.pizza.rest.messaging.KafkaTopicProperties;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -22,8 +22,7 @@ import java.util.Optional;
 @Slf4j
 public class OrderService {
 
-    @Value("${pizza.broker-topic.kitchen}")
-    private String topic;
+    private final KafkaTopicProperties kafkaTopicProperties;
 
     private final PizzaRepository pizzaRepo;
     private final OrderRepository orderRepo;
@@ -68,7 +67,7 @@ public class OrderService {
         }
 
         PizzaOrder pizzaOrder = optionalPizzaOrder.get();
-        kafkaOrderMessagingService.sendOrder(topic, pizzaOrder);
+        kafkaOrderMessagingService.sendOrder(kafkaTopicProperties.kitchen(), pizzaOrder);
     }
 
 }

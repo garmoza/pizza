@@ -14,6 +14,6 @@ spring:
     bootstrap-servers: 'localhost:9092'
 
 pizza:
-  broker-topic:
-    application: ready
+  kafka-topic:
     kitchen: kitchen
+    app: ready

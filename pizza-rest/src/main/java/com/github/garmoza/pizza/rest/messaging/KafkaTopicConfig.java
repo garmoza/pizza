@@ -1,5 +1,6 @@
 package com.github.garmoza.pizza.rest.messaging;
 
+import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.admin.AdminClientConfig;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,10 +12,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
+@RequiredArgsConstructor
 public class KafkaTopicConfig {
 
     @Value(value = "${spring.kafka.bootstrap-servers}")
     private String bootstrapAddress;
+
+    private final KafkaTopicProperties kafkaTopicProperties;
 
     @Bean
     public KafkaAdmin kafkaAdmin() {
@@ -25,12 +29,12 @@ public class KafkaTopicConfig {
 
     @Bean
     public NewTopic topic1() {
-        return new NewTopic("kitchen", 1, (short) 1);
+        return new NewTopic(kafkaTopicProperties.kitchen(), 1, (short) 1);
     }
 
     @Bean
     public NewTopic topic2() {
-        return new NewTopic("ready", 1, (short) 1);
+        return new NewTopic(kafkaTopicProperties.app(), 1, (short) 1);
     }
 
 }
