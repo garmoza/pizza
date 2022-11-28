@@ -29,22 +29,20 @@ services:
       - app-net
 
   pizza-rest:
-    image: garmoza/pizza-rest:0.0.1-SNAPSHOT
+    image: garmoza/pizza-rest:0.0.2-SNAPSHOT
     ports:
       - "8081:8081"
-    depends_on:
-      - broker
     environment:
       SPRING_KAFKA_BOOTSTRAP_SERVERS: 'broker:9092'
+      PIZZA_KAFKA_TOPIC_KITCHEN: 'super-kitchen'
     networks:
       - app-net
 
   pizza-kitchen:
-    image: garmoza/pizza-kitchen:0.0.1-SNAPSHOT
-    depends_on:
-      - pizza-rest
+    image: garmoza/pizza-kitchen:0.0.2-SNAPSHOT
     environment:
       SPRING_KAFKA_BOOTSTRAP_SERVERS: 'broker:9092'
+      PIZZA_KAFKA_TOPIC_KITCHEN: 'super-kitchen'
     networks:
       - app-net
 

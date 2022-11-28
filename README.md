@@ -20,6 +20,8 @@ REST API для:
 
 Отправляет "готовый" (нет доп. логики) заказ в Kafka (topic ready)
 
+P.S. название топиков можно сконфигурировать через переменные, kitchen изменен на super-kitchen в docker-compose.yml 
+
 ## Dev
 
 ```sh
@@ -28,10 +30,11 @@ docker compose up -d
 
 <img src="docker-compose.png" alt="">
 
-Сделал `pizza-kitchen` зависимым от `pizza-rest` так как в `pizza-rest` определены конфигурации для топиков.
-`pizza-rest` может не зависеть от `broker`, но нужны Dependency and Health checks.
-
 Локальный Kafka
 ```shell
 docker compose -f .\docker-compose-kafka.yml up -d 
 ```
+
+## TODO
+
+Dependency and Health checks
