@@ -2,16 +2,23 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.scss'
 
-import Root, {
-  loader as rootLoader,
-} from "./routes/root.jsx";
+import Root from "./routes/root.jsx";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import Index, {
+  loader as rootLoader,
+} from "./routes/index.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
-    loader: rootLoader,
+    children: [
+      {
+        index: true,
+        element: <Index />,
+        loader: rootLoader,
+      },
+    ],
   },
 ]);
 

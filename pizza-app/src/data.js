@@ -4,8 +4,7 @@ const client = axios.create({
   baseURL: "https://jsonplaceholder.typicode.com/posts"
 });
 
-export async function getPosts() {
-  let response = await client.get('?_limit=10');
-  console.log(response.data);
-  return response.data;
+export async function getPizzas() {
+  let response = await client.get('http://localhost:8081/pizzas');
+  return response.data._embedded;
 }

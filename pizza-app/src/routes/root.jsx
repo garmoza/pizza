@@ -1,14 +1,6 @@
-import {getPosts} from "../data.js";
-import {useLoaderData} from "react-router-dom";
-
-export async function loader() {
-  const posts = await getPosts();
-  return { posts };
-}
+import {Outlet} from "react-router-dom";
 
 export default function Root() {
-  const { posts } = useLoaderData();
-
   return (
     <>
       <div id="header">
@@ -26,10 +18,12 @@ export default function Root() {
           />
         </form>
         <nav>
-          <a href={`basket`}>Basket</a>
+          <a href={`cart`}>Cart</a>
         </nav>
       </div>
-      <div id="content"></div>
+      <div id="content">
+        <Outlet />
+      </div>
     </>
   );
 }
