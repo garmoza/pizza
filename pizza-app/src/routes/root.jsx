@@ -1,4 +1,14 @@
+import {getPosts} from "../data.js";
+import {useLoaderData} from "react-router-dom";
+
+export async function loader() {
+  const posts = await getPosts();
+  return { posts };
+}
+
 export default function Root() {
+  const { posts } = useLoaderData();
+
   return (
     <>
       <div id="header">
