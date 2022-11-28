@@ -8,7 +8,7 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
 @Component
-@KafkaListener(id = "foo", topics = "kitchen")
+@KafkaListener(id = "foo", topics = "${pizza.kafka-topic.kitchen}")
 @Slf4j
 @RequiredArgsConstructor
 public class KafkaMultiTypeListener {
