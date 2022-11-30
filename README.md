@@ -4,8 +4,8 @@
 
 REST API для:
 - создание заказа (POST)
-- изменение заказа (PATCH)
-- удаление
+- изменение заказа (PUT)
+- удаление (DELETE)
 - подтверждение заказа (POST)
 
 Используется DTO - OrderModel
@@ -37,4 +37,8 @@ docker compose -f .\docker-compose-kafka.yml up -d
 
 ## TODO
 
-Dependency and Health checks
+- Dependency and Health checks
+- Tests
+- Admin module (Thymeleaf)
+- Security
+- pizza-app
