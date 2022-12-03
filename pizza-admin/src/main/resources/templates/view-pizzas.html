@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/style.css}"/>
+</head>
+<body>
+<h1>Available pizzas</h1>
+
+<h2>Regular</h2>
+<div class="pizza-group" id="pizza-regular">
+    <div th:each="pizza : ${regular}" class="pizza-item">
+        <span th:text="${pizza.name}">PIZZA NAME</span><br/>
+    </div>
+</div>
+
+<h2>Mini</h2>
+<div class="pizza-group" id="pizza-mini">
+    <div th:each="pizza : ${mini}" class="pizza-item">
+        <span th:text="${pizza.name}">PIZZA NAME</span><br/>
+    </div>
+</div>
+
+
+</body>
+</html>
